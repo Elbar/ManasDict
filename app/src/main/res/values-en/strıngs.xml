@@ -5,16 +5,16 @@
 
     <!-- Drawer, toolbar strings -->
     <string name="drawer_toolbar_mainPage">Manas Dict</string>
-    <string name="drawer_toolbar_settings">Настройки</string>
-    <string name="drawer_toolbar_aboutApp">О приложении</string>
+    <string name="drawer_toolbar_settings">Settings</string>
+    <string name="drawer_toolbar_aboutApp">About app</string>
 
     <!-- Preferences title strings -->
-    <string name="pref_title_language">Язык приложения</string>
-    <string name="pref_title_about">О приложении</string>
+    <string name="pref_title_language">App language</string>
+    <string name="pref_title_about">About app</string>
 
     <!-- Preferences summary strings -->
-    <string name="pref_summary_language">Язык интерфейса приложения</string>
-    <string name="pref_summary_about">Версия: 1.0</string>
+    <string name="pref_summary_language">UI language</string>
+    <string name="pref_summary_about">Version: 1.0</string>
 
     <!-- Preferences entries -->
     <string-array name="pref_entries_languages">

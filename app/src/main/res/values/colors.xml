@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="color" name="dt_toolbar_bg">#3eafb1</item>
+    <item name="dt_toolbar_bg" type="color">#3eafb1</item>
 </resources>
