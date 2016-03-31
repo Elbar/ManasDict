@@ -41,4 +41,5 @@ ehthumbs.db
 Thumbs.db
 
 build
+build/intermediates/dex-cache
 
