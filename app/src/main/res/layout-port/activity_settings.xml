@@ -9,11 +9,12 @@
         android:id="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        app:title="@string/drawer_toolbar_settings"
         app:theme="@style/DT.Toolbar"
     />
 
     <LinearLayout
-        android:id="@id/fragmentsLayout" android:orientation="vertical"
+        android:id="@id/settingsFragmentLayout" android:orientation="vertical"
         android:layout_width="match_parent" android:layout_height="match_parent">
     </LinearLayout>
 
