@@ -17,12 +17,14 @@ import kg.manasdict.android.R;
 /**
  * Created by root on 3/31/16.
  */
-public class MainFragment extends Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener {
+public class MainFragment extends Fragment implements View.OnClickListener {
 
     private final String LOG_TAG = "MainFragment";
     private AppCompatSpinner mSourceLangSpinner;
     private AppCompatSpinner mDestinationLangSpinner;
     private IconicsCompatButton mExchangeLangBtn;
+    private int mLastSourceLangItemId = 0;
+    private int mLastDestinationLangItemId = 1;
 
     @Nullable
     @Override
@@ -31,16 +33,6 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
         initFragmentElements(rootView);
 
         return rootView;
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
     }
 
     @Override
@@ -64,16 +56,52 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSourceLangSpinner.setAdapter(spinnerAdapter);
         mDestinationLangSpinner.setAdapter(spinnerAdapter);
-        mSourceLangSpinner.setOnItemSelectedListener(this);
-        mDestinationLangSpinner.setOnItemSelectedListener(this);
+        mSourceLangSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == mDestinationLangSpinner.getSelectedItemPosition()) {
+                    exchangeSpinnersItems();
+                }
+
+                mLastSourceLangItemId = position;
+                mLastDestinationLangItemId = mDestinationLangSpinner.getSelectedItemPosition();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        mDestinationLangSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == mSourceLangSpinner.getSelectedItemPosition()) {
+                    exchangeSpinnersItems();
+                }
+
+                mLastSourceLangItemId = mSourceLangSpinner.getSelectedItemPosition();
+                mLastDestinationLangItemId = position;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         mExchangeLangBtn.setOnClickListener(this);
+
+        mSourceLangSpinner.setSelection(0);
+        mDestinationLangSpinner.setSelection(1);
     }
 
     protected void exchangeSpinnersItems() {
-        int sourceId = mSourceLangSpinner.getSelectedItemPosition();
-        int destinationId = mDestinationLangSpinner.getSelectedItemPosition();
+        mSourceLangSpinner.setSelection(mLastDestinationLangItemId);
+        mDestinationLangSpinner.setSelection(mLastSourceLangItemId);
 
-        mSourceLangSpinner.setSelection(destinationId);
-        mDestinationLangSpinner.setSelection(sourceId);
+//        int temp;
+//
+//        temp = mLastSourceLangItemId;
+//        mLastSourceLangItemId = mLastDestinationLangItemId;
+//        mLastDestinationLangItemId = temp;
     }
 }
