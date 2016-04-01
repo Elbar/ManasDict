@@ -11,10 +11,20 @@ import kg.manasdict.android.app.data.PreferencesConst;
  */
 public class App extends Application {
 
+    private boolean mLocaleChanged = false;
+
     @Override
     public void onCreate() {
         super.onCreate();
         setDefaultLocale();
+    }
+
+    public boolean isLocaleChanged() {
+        return mLocaleChanged;
+    }
+
+    public void setLocaleChanged(boolean localeChanged) {
+        this.mLocaleChanged = localeChanged;
     }
 
     protected void setDefaultLocale() {
@@ -23,7 +33,7 @@ public class App extends Application {
 
         if (locale.equals("")) {
             SharedPreferences.Editor editor = preferences.edit();
-            editor.putString("pref_language", PreferencesConst.LOCALE_EN);
+            editor.putString("pref_language", PreferencesConst.LOCALE_RU);
             editor.apply();
         }
     }

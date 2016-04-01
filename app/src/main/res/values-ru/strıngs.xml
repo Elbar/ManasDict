@@ -31,4 +31,7 @@
         <item>en</item>
     </string-array>
 
+    <!-- Info strings -->
+    <string name="info_changeLocale">Язык будет изменен при следующем запуске.</string>
+
 </resources>

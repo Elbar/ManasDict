@@ -5,6 +5,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import kg.manasdict.android.R;
+import kg.manasdict.android.app.boot.App;
 import kg.manasdict.android.app.ui.fragment.preference.SettingsFragment;
 
 /**
@@ -12,14 +13,17 @@ import kg.manasdict.android.app.ui.fragment.preference.SettingsFragment;
  */
 public class SettingsActivity extends AbstractActivity {
 
+    private final String LOG_TAG = "SettingsActivity";
+
     private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setLocale();
+        if (!((App) getApplicationContext()).isLocaleChanged()) {
+            setLocale();
+        }
         setContentView(R.layout.activity_settings);
-
         initActivityElements();
     }
 

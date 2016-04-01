@@ -11,6 +11,7 @@ import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import kg.manasdict.android.R;
+import kg.manasdict.android.app.boot.App;
 import kg.manasdict.android.app.ui.drawer.DrawerActivityDrawerBuilder;
 import kg.manasdict.android.app.ui.fragment.drawer.MainFragment;
 
@@ -18,6 +19,8 @@ import kg.manasdict.android.app.ui.fragment.drawer.MainFragment;
  * Created by root on 3/30/16.
  */
 public class DrawerActivity extends AbstractActivity implements Drawer.OnDrawerItemClickListener {
+
+    private final String LOG_TAG = "DrawerActivity";
 
     private Toolbar mToolbar;
     private Drawer mDrawer;
@@ -27,9 +30,10 @@ public class DrawerActivity extends AbstractActivity implements Drawer.OnDrawerI
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (!((App) getApplicationContext()).isLocaleChanged()) {
+            setLocale();
+        }
         setContentView(R.layout.activity_drawer);
-
-        setLocale();
         initDrawerFragments();
         initActivityElements();
     }
@@ -45,6 +49,15 @@ public class DrawerActivity extends AbstractActivity implements Drawer.OnDrawerI
         }
 
         return false;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mDrawer.isDrawerOpen()) {
+            mDrawer.closeDrawer();
+        } else {
+            super.onBackPressed();
+        }
     }
 
     protected void initActivityElements() {

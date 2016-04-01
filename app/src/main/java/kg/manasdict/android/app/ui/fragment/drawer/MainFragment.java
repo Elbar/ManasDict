@@ -14,6 +14,8 @@ import kg.manasdict.android.R;
  */
 public class MainFragment extends Fragment {
 
+    private final String LOG_TAG = "MainFragment";
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

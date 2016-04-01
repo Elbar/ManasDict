@@ -1,18 +1,19 @@
 package kg.manasdict.android.app.ui.fragment.preference;
 
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
-
-import java.util.Locale;
+import android.widget.Toast;
 
 import kg.manasdict.android.R;
+import kg.manasdict.android.app.boot.App;
 
 /**
  * Created by root on 3/31/16.
  */
 public class SettingsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
+
+    private final String LOG_TAG = "SettingsFragment";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,19 +36,11 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
         String locale = sharedPreferences.getString("pref_language", "");
+        App app = (App) getActivity().getApplicationContext();
 
         if (!locale.equals("")) {
-            changeLocale(locale);
-            getActivity().recreate();
+            Toast.makeText(getActivity(), R.string.info_changeLocale, Toast.LENGTH_LONG).show();
+            app.setLocaleChanged(true);
         }
-    }
-
-    protected void changeLocale(String localization) {
-        Locale locale = new Locale(localization);
-        Configuration configuration = new Configuration();
-        configuration.locale = locale;
-        Locale.setDefault(locale);
-
-        getResources().updateConfiguration(configuration, getResources().getDisplayMetrics());
     }
 }

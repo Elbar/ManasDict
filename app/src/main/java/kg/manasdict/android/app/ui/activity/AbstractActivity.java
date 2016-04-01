@@ -11,6 +11,8 @@ import java.util.Locale;
  */
 public class AbstractActivity extends AppCompatActivity {
 
+    private final String LOG_TAG = "DADrawerBuilder";
+
     protected void setLocale() {
         String localization = PreferenceManager.getDefaultSharedPreferences(this).getString("pref_language", "");
 

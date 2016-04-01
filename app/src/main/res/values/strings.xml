@@ -24,11 +24,15 @@
         <item>English</item>
     </string-array>
 
+    <!-- Preferences entry values -->
     <string-array name="pref_entryValues_languages">
         <item>kg</item>
         <item>tr</item>
         <item>ru</item>
         <item>en</item>
     </string-array>
+
+    <!-- Info strings -->
+    <string name="info_changeLocale">Язык будет изменен при следующем запуске.</string>
 
 </resources>
