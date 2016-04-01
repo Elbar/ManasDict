@@ -11,6 +11,7 @@ public class EnWordDetails implements Serializable {
 
     public static final String ID_FIELD = "enword_id";
 
+
     @DatabaseField(generatedId = true, columnName = ID_FIELD)
     public int enWordId;
 
