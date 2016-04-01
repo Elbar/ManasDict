@@ -1,4 +1,4 @@
-package kg.manasdict.android.app.data;
+package kg.manasdict.android.app.db.model;
 
 import com.j256.ormlite.field.DatabaseField;
 
