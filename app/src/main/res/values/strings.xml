@@ -5,7 +5,7 @@
 
     <!-- Drawer, toolbar strings -->
     <string name="drawer_toolbar_mainPage">Manas Dict</string>
-    <string name="drawer_toolbar_settings">Настройки</string>
+        <string name="drawer_toolbar_settings">Настройки</string>
     <string name="drawer_toolbar_aboutApp">О приложении</string>
 
     <!-- Preferences title strings -->
@@ -18,15 +18,15 @@
 
     <!-- Preferences entries -->
     <string-array name="pref_entries_languages">
-        <item>Кыргызча</item>
-        <item>Türkçe</item>
+        <item>Кыргызский</item>
+        <item>Турецкий</item>
         <item>Русский</item>
-        <item>English</item>
+        <item>Английский</item>
     </string-array>
 
     <!-- Preferences entry values -->
     <string-array name="pref_entryValues_languages">
-        <item>kg</item>
+        <item>ky</item>
         <item>tr</item>
         <item>ru</item>
         <item>en</item>
@@ -34,5 +34,13 @@
 
     <!-- Info strings -->
     <string name="info_changeLocale">Язык будет изменен при следующем запуске.</string>
+
+    <!-- Spinner strings -->
+    <string-array name="spinner_languages">
+        <item>Кыргызский</item>
+        <item>Турецкий</item>
+        <item>Русский</item>
+        <item>Английский</item>
+    </string-array>
 
 </resources>

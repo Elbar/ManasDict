@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="dt_toolbar_bg" type="color">#3eafb1</item>
+    <item name="dt_contentLayout_bg" type="color">#e2e2e2</item>
+    <item name="dt_exchangeButton_bg" type="color">#00468c</item>
 </resources>

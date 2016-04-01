@@ -18,14 +18,14 @@
 
     <!-- Preferences entries -->
     <string-array name="pref_entries_languages">
-        <item>Кыргызча</item>
-        <item>Türkçe</item>
-        <item>Русский</item>
+        <item>Kyrgyz</item>
+        <item>Turkish</item>
+        <item>Russian</item>
         <item>English</item>
     </string-array>
 
     <string-array name="pref_entryValues_languages">
-        <item>kg</item>
+        <item>ky</item>
         <item>tr</item>
         <item>ru</item>
         <item>en</item>

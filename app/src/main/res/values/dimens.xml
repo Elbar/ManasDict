@@ -3,4 +3,7 @@
     <!-- Width dimens -->
     <item name="drawer_width" type="dimen">300dp</item>
 
+    <!-- Margin dimens -->
+    <item name="spinnersLayout_marginTop" type="dimen">10dp</item>
+
 </resources>

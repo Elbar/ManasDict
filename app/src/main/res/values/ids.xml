@@ -3,4 +3,7 @@
     <item name="toolbar" type="id" />
     <item name="fragmentsLayout" type="id" />
     <item name="settingsFragmentLayout" type="id" />
+    <item name="sourceLangSpinner" type="id" />
+    <item name="destinationLangSpinner" type="id" />
+    <item name="exchangeLangBtn" type="id" />
 </resources>

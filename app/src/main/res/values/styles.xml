@@ -4,4 +4,24 @@
         <item name="android:background">@color/dt_toolbar_bg</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
+
+    <style name="DT.ContentLayout" parent="@android:style/Widget">
+        <item name="android:background">@color/dt_contentLayout_bg</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="DT.SpinnersLayout" parent="@android:style/Widget">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:background">@android:color/white</item>
+    </style>
+
+    <style name="DT.ExchangeButton" parent="@android:style/Widget">
+        <item name="android:background">@color/dt_exchangeButton_bg</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 </resources>

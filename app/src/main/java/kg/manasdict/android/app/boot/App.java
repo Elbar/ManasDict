@@ -24,7 +24,7 @@ public class App extends Application {
     }
 
     public void setLocaleChanged(boolean localeChanged) {
-        this.mLocaleChanged = localeChanged;
+        mLocaleChanged = localeChanged;
     }
 
     protected void setDefaultLocale() {

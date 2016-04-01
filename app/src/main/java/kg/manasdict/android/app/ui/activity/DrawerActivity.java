@@ -39,6 +39,12 @@ public class DrawerActivity extends AbstractActivity implements Drawer.OnDrawerI
     }
 
     @Override
+    protected void onDestroy() {
+        ((App) getApplicationContext()).setLocaleChanged(false);
+        super.onDestroy();
+    }
+
+    @Override
     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
         int id = drawerItem.getIdentifier();
 
