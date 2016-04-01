@@ -1,0 +1,22 @@
+# --table-start--
+dataClass=package kg.manasdict.android.app.data.EnwordDetails
+tableName=enwordDetails
+# --table-fields-start--
+# --field-start--
+fieldName=enWordId
+columnName=enword_id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=ruword_id
+columnName=ruWordDetails
+# --field-end--
+# --field-start--
+fieldName=kgword_id
+columnName=kgWordDetails
+# --field-end--
+# --field-start--
+fieldName=trword_id
+columnName=trWordDetails
+# --field-end--
+#################################
