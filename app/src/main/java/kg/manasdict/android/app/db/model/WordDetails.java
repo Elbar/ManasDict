@@ -6,7 +6,7 @@ import com.j256.ormlite.field.DatabaseField;
  * Created by fukuro on 4/1/16.
  */
 public class WordDetails {
-    public static final String ID_FIELD = "word_id";
+    public static final String ID_FIELD = "id";
 
 
     @DatabaseField(generatedId = true, columnName = ID_FIELD)
