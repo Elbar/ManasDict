@@ -81,7 +81,6 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
 
     @Override
     public void afterTextChanged(final Editable s) {
-
         if (s.length() != 0) {
             mTimer = new Timer();
             mTimer.schedule(new TimerTask() {
@@ -92,7 +91,6 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
                         public void run() {
                             try {
                                 translateText(s.toString());
-                                mTranslatedTextCV.setVisibility(View.VISIBLE);
                             } catch (SQLException e) {
                                 Log.d(MainFragment.class.getName(), e.getMessage());
                             }
@@ -102,8 +100,8 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
             }, TIMER_DELAY);
         } else {
             mTranslatedText.setText("");
+            mTranslatedTextCV.setVisibility(View.INVISIBLE);
         }
-
     }
 
     private void translateText(String s) throws SQLException {
@@ -139,13 +137,10 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
                 case 3:
                     mTranslatedText.setText(wordDetails.getEnWord());
                     break;
-
             }
 
+            mTranslatedTextCV.setVisibility(View.VISIBLE);
         }
-
-
-        mTranslatedTextCV.setVisibility(View.VISIBLE);
     }
 
     protected void initFragmentElements(View rootView) throws SQLException{
