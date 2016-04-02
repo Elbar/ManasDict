@@ -33,5 +33,7 @@
 
     <!-- Info strings -->
     <string name="info_changeLocale">The language will be changed in next launch.</string>
+    <string name="info_wordNotFound">Word not found</string>
+
 
 </resources>

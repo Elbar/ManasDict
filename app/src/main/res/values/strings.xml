@@ -5,7 +5,7 @@
 
     <!-- Drawer, toolbar strings -->
     <string name="drawer_toolbar_mainPage">Manas Dict</string>
-        <string name="drawer_toolbar_settings">Настройки</string>
+    <string name="drawer_toolbar_settings">Настройки</string>
     <string name="drawer_toolbar_aboutApp">О приложении</string>
 
     <!-- Preferences title strings -->
@@ -34,13 +34,14 @@
 
     <!-- Info strings -->
     <string name="info_changeLocale">Язык будет изменен при следующем запуске.</string>
+    <string name="info_wordNotFound">Слово не найдено</string>
 
     <!-- Spinner strings -->
-    <string-array name="spinner_languages">
-        <item>Кыргызский</item>
-        <item>Турецкий</item>
-        <item>Русский</item>
-        <item>Английский</item>
-    </string-array>
+        <string-array name="spinner_languages">
+            <item>Кыргызский</item>
+            <item>Турецкий</item>
+            <item>Русский</item>
+            <item>Английский</item>
+        </string-array>
 
 </resources>

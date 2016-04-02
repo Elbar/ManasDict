@@ -43,6 +43,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
     private WordDetailsDao mWordDetailsDao;
     private CardView mTranslatedTextCV;
     private TextView mTranslatedText;
+    private String mWordNotFound;
 
     @Nullable
     @Override
@@ -140,8 +141,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
                     break;
             }
         } else {
-            mTranslatedText.setText("Слово не найдено");
-
+            mTranslatedText.setText(mWordNotFound);
         }
         mTranslatedTextCV.setVisibility(View.VISIBLE);
     }
@@ -156,6 +156,8 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
         mWordDetailsDao = HelperFactory.getHelper().getWordDetailsDao();
         mTranslatedTextCV = (CardView) rootView.findViewById(R.id.translatedTextCV);
         mTranslatedText = (TextView) rootView.findViewById(R.id.translatedText);
+        mWordNotFound = getResources().getString(R.string.info_wordNotFound);
+
         final ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(
                 getActivity(),
                 R.array.spinner_languages,

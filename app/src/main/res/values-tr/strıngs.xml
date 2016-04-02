@@ -33,5 +33,7 @@
 
     <!-- Info strings -->
     <string name="info_changeLocale">Язык будет изменен при следующем запуске.</string>
+    <string name="info_wordNotFound">Soz bulunmamis</string>
+
 
 </resources>
