@@ -1,11 +1,10 @@
 package kg.manasdict.android.app.ui.fragment.drawer;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatSpinner;
-import android.support.v7.widget.ThemedSpinnerAdapter;
+import android.support.v7.widget.CardView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -15,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.mikepenz.iconics.view.IconicsCompatButton;
 
@@ -36,12 +35,14 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
     private AppCompatSpinner mSourceLangSpinner;
     private AppCompatSpinner mDestinationLangSpinner;
     private IconicsCompatButton mExchangeLangBtn;
-    private int mLastSourceLangItemId = 0;
-    private int mLastDestinationLangItemId = 1;
+    private int mLastSourceLangItemPosition = 0;
+    private int mLastDestinationLangItemPosition = 1;
     private EditText mSearchWord;
     private Timer mTimer;
     private final long TIMER_DELAY = 1000;
     private WordDetailsDao mWordDetailsDao;
+    private CardView mTranslatedTextCV;
+    private TextView mTranslatedText;
 
     @Nullable
     @Override
@@ -79,7 +80,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
     }
 
     @Override
-    public void afterTextChanged(Editable s) {
+    public void afterTextChanged(final Editable s) {
 
         if (s.length() != 0) {
             mTimer = new Timer();
@@ -89,11 +90,60 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            try {
+                                translateText(s.toString());
+                                mTranslatedTextCV.setVisibility(View.VISIBLE);
+                            } catch (SQLException e) {
+                                Log.d(MainFragment.class.getName(), e.getMessage());
+                            }
                         }
                     });
                 }
             }, TIMER_DELAY);
         }
+
+    }
+
+    private void translateText(String s) throws SQLException {
+        WordDetails wordDetails = null;
+
+
+        switch (mLastSourceLangItemPosition) {
+            case 0:
+                wordDetails = mWordDetailsDao.findByKgWord(s);
+                break;
+            case 1:
+                wordDetails = mWordDetailsDao.findByTrWord(s);
+                break;
+            case 2:
+                wordDetails = mWordDetailsDao.findByRuWord(s);
+                break;
+            case 3:
+                wordDetails = mWordDetailsDao.findByEnWord(s);
+                break;
+        }
+
+        if (wordDetails != null) {
+            switch (mLastDestinationLangItemPosition) {
+                case 0:
+                    mTranslatedText.setText(wordDetails.getKgWord());
+                    break;
+                case 1:
+                    mTranslatedText.setText(wordDetails.getTrWord());
+                    break;
+                case 2:
+                    mTranslatedText.setText(wordDetails.getRuWord());
+                    break;
+                case 3:
+                    mTranslatedText.setText(wordDetails.getEnWord());
+                    break;
+
+            }
+
+        }
+
+
+        mTranslatedTextCV.setVisibility(View.VISIBLE);
     }
 
     protected void initFragmentElements(View rootView) throws SQLException{
@@ -104,6 +154,8 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
         mSearchWord = (EditText) rootView.findViewById(R.id.searchText);
         mTimer = new Timer();
         mWordDetailsDao = HelperFactory.getHelper().getWordDetailsDao();
+        mTranslatedTextCV = (CardView) rootView.findViewById(R.id.translatedTextCV);
+        mTranslatedText = (TextView) rootView.findViewById(R.id.translatedText);
         ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(
                 getActivity(),
                 R.array.spinner_languages,
@@ -118,8 +170,8 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
                     exchangeSpinnersItems();
                 }
 
-                mLastSourceLangItemId = position;
-                mLastDestinationLangItemId = mDestinationLangSpinner.getSelectedItemPosition();
+                mLastSourceLangItemPosition = position;
+                mLastDestinationLangItemPosition = mDestinationLangSpinner.getSelectedItemPosition();
             }
 
             @Override
@@ -135,8 +187,8 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
                     exchangeSpinnersItems();
                 }
 
-                mLastSourceLangItemId = mSourceLangSpinner.getSelectedItemPosition();
-                mLastDestinationLangItemId = position;
+                mLastSourceLangItemPosition = mSourceLangSpinner.getSelectedItemPosition();
+                mLastDestinationLangItemPosition = position;
             }
 
             @Override
@@ -154,8 +206,8 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
     }
 
     protected void exchangeSpinnersItems() {
-        mSourceLangSpinner.setSelection(mLastDestinationLangItemId);
-        mDestinationLangSpinner.setSelection(mLastSourceLangItemId);
+        mSourceLangSpinner.setSelection(mLastDestinationLangItemPosition);
+        mDestinationLangSpinner.setSelection(mLastSourceLangItemPosition);
     }
 }
 

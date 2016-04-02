@@ -8,5 +8,6 @@
     <item name="exchangeLangBtn" type="id" />
     <item name="searchText" type="id" />
     <item name="translatedText" type="id" />
+    <item name="translatedTextCV" type="id" />
 
 </resources>
