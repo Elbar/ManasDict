@@ -69,6 +69,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+
     }
 
     @Override
@@ -138,9 +139,11 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
                     mTranslatedText.setText(wordDetails.getEnWord());
                     break;
             }
+        } else {
+            mTranslatedText.setText("Слово не найдено");
 
-            mTranslatedTextCV.setVisibility(View.VISIBLE);
         }
+        mTranslatedTextCV.setVisibility(View.VISIBLE);
     }
 
     protected void initFragmentElements(View rootView) throws SQLException{
@@ -188,7 +191,9 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
                 mLastDestinationLangItemPosition = position;
 
                 try {
-                    translateText(mSearchWord.getText().toString());
+                    if(mSearchWord.getText().length() != 0) {
+                        translateText(mSearchWord.getText().toString());
+                    }
                 } catch (SQLException e) {
                     Log.d(MainFragment.class.getName(), e.getMessage());
                 }
