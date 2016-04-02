@@ -12,8 +12,6 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
  */
 public class DrawerBuilder {
 
-    private final String LOG_TAG = "DrawerBuilder";
-
     public static Drawer build(@NonNull Activity activity, @NonNull Toolbar toolbar, int drawerWidthRes,
                                       @NonNull IDrawerItem[] drawerItems, @NonNull Drawer.OnDrawerItemClickListener itemClickListener) {
         return new com.mikepenz.materialdrawer.DrawerBuilder()

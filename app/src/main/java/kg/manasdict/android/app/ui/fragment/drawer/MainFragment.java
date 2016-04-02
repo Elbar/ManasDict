@@ -19,7 +19,6 @@ import kg.manasdict.android.R;
  */
 public class MainFragment extends Fragment implements View.OnClickListener {
 
-    private final String LOG_TAG = "MainFragment";
     private AppCompatSpinner mSourceLangSpinner;
     private AppCompatSpinner mDestinationLangSpinner;
     private IconicsCompatButton mExchangeLangBtn;
@@ -97,11 +96,5 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     protected void exchangeSpinnersItems() {
         mSourceLangSpinner.setSelection(mLastDestinationLangItemId);
         mDestinationLangSpinner.setSelection(mLastSourceLangItemId);
-
-//        int temp;
-//
-//        temp = mLastSourceLangItemId;
-//        mLastSourceLangItemId = mLastDestinationLangItemId;
-//        mLastDestinationLangItemId = temp;
     }
 }
