@@ -100,6 +100,8 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
                     });
                 }
             }, TIMER_DELAY);
+        } else {
+            mTranslatedText.setText("");
         }
 
     }
@@ -107,7 +109,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
     private void translateText(String s) throws SQLException {
         WordDetails wordDetails = null;
 
-
+        s = s.replaceAll("\\s+$", "");
         switch (mLastSourceLangItemPosition) {
             case 0:
                 wordDetails = mWordDetailsDao.findByKgWord(s);
@@ -156,7 +158,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
         mWordDetailsDao = HelperFactory.getHelper().getWordDetailsDao();
         mTranslatedTextCV = (CardView) rootView.findViewById(R.id.translatedTextCV);
         mTranslatedText = (TextView) rootView.findViewById(R.id.translatedText);
-        ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(
+        final ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(
                 getActivity(),
                 R.array.spinner_languages,
                 android.R.layout.simple_spinner_dropdown_item);
@@ -189,6 +191,12 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
 
                 mLastSourceLangItemPosition = mSourceLangSpinner.getSelectedItemPosition();
                 mLastDestinationLangItemPosition = position;
+
+                try {
+                    translateText(mSearchWord.getText().toString());
+                } catch (SQLException e) {
+                    Log.d(MainFragment.class.getName(), e.getMessage());
+                }
             }
 
             @Override
