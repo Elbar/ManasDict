@@ -6,4 +6,7 @@
     <item name="sourceLangSpinner" type="id" />
     <item name="destinationLangSpinner" type="id" />
     <item name="exchangeLangBtn" type="id" />
+    <item name="searchText" type="id" />
+    <item name="translatedText" type="id" />
+
 </resources>
