@@ -13,8 +13,6 @@ import kg.manasdict.android.app.boot.App;
  */
 public class SettingsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
 
-    private final String LOG_TAG = "SettingsFragment";
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

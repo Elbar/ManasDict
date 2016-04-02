@@ -6,24 +6,57 @@ import com.j256.ormlite.field.DatabaseField;
  * Created by fukuro on 4/1/16.
  */
 public class WordDetails {
-    public static final String ID_FIELD = "id";
 
-
-    @DatabaseField(generatedId = true, columnName = ID_FIELD)
-    public int wordId;
+    @DatabaseField(generatedId = true, columnName = "id")
+    private int id;
 
     @DatabaseField(columnName = "kg_word")
-    public String kgWord;
-
+    private String kgWord;
 
     @DatabaseField(columnName = "ru_word")
-    public String ruWord;
+    private String ruWord;
 
     @DatabaseField(columnName = "en_word")
-    public String enWord;
+    private String enWord;
 
     @DatabaseField(columnName = "tr_word")
-    public String trWord;
+    private String trWord;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getKgWord() {
+        return kgWord;
+    }
+
+    public void setKgWord(String kgWord) {
+        this.kgWord = kgWord;
+    }
+
+    public String getRuWord() {
+        return ruWord;
+    }
+
+    public void setRuWord(String ruWord) {
+        this.ruWord = ruWord;
+    }
+
+    public String getEnWord() {
+        return enWord;
+    }
+
+    public void setEnWord(String enWord) {
+        this.enWord = enWord;
+    }
+
+    public String getTrWord() {
+        return trWord;
+    }
+
+    public void setTrWord(String trWord) {
+        this.trWord = trWord;
+    }
 
     public WordDetails() {
     }

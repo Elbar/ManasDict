@@ -13,8 +13,6 @@ import kg.manasdict.android.app.ui.fragment.preference.SettingsFragment;
  */
 public class SettingsActivity extends AbstractActivity {
 
-    private final String LOG_TAG = "SettingsActivity";
-
     private Toolbar mToolbar;
 
     @Override

@@ -13,17 +13,19 @@ import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
 
 import kg.manasdict.android.R;
+import kg.manasdict.android.app.db.dao.WordDetailsDao;
 import kg.manasdict.android.app.db.model.WordDetails;
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
+
     private static final String DATABASE_NAME = "manasdict.db";
     private static final int DATABASE_VERSION = 1;
-    private Dao<WordDetails, Integer> mWordDao;
+
+    private WordDetailsDao mWordDetailsDao = null;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
-
 
     @Override
     public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
@@ -45,5 +47,11 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     }
 
+    public WordDetailsDao getWordDetailsDao() throws SQLException {
+        if (mWordDetailsDao == null) {
+            mWordDetailsDao = new WordDetailsDao(getConnectionSource(), WordDetails.class);
+        }
 
+        return mWordDetailsDao;
+    }
 }

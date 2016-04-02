@@ -17,8 +17,6 @@ import kg.manasdict.android.lib.ui.drawer.DrawerBuilder;
  */
 public class DrawerActivityDrawerBuilder {
 
-    private final String LOG_TAG = "DADrawerBuilder";
-
     public static Drawer build(final Activity activity, Toolbar toolbar, Drawer.OnDrawerItemClickListener listener) {
         IDrawerItem[] drawerItems = new IDrawerItem[] {
             new PrimaryDrawerItem().withName(R.string.drawer_toolbar_mainPage).withIcon(FontAwesome.Icon.faw_home).withIdentifier(0),
