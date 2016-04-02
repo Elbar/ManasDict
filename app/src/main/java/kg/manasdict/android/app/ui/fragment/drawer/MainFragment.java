@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatSpinner;
+import android.support.v7.widget.ThemedSpinnerAdapter;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -18,10 +19,14 @@ import android.widget.Toast;
 
 import com.mikepenz.iconics.view.IconicsCompatButton;
 
+import java.sql.SQLException;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import kg.manasdict.android.R;
+import kg.manasdict.android.app.db.HelperFactory;
+import kg.manasdict.android.app.db.dao.WordDetailsDao;
+import kg.manasdict.android.app.db.model.WordDetails;
 
 /**
  * Created by root on 3/31/16.
@@ -36,13 +41,17 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
     private EditText mSearchWord;
     private Timer mTimer;
     private final long TIMER_DELAY = 1000;
+    private WordDetailsDao mWordDetailsDao;
+
     @Nullable
     @Override
-
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-        initFragmentElements(rootView);
-
+        try {
+            initFragmentElements(rootView);
+        } catch (SQLException e) {
+            Log.e(MainFragment.class.getName(), e.getMessage());
+        }
         return rootView;
     }
 
@@ -72,9 +81,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
     @Override
     public void afterTextChanged(Editable s) {
 
-
         if (s.length() != 0) {
-//            Log.d(MainFragment.class.getName(), s.toString());
             mTimer = new Timer();
             mTimer.schedule(new TimerTask() {
                 @Override
@@ -82,24 +89,21 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getActivity(), "lorem", Toast.LENGTH_LONG).show();
                         }
                     });
                 }
             }, TIMER_DELAY);
-
         }
-
-
     }
 
-    protected void initFragmentElements(View rootView) {
+    protected void initFragmentElements(View rootView) throws SQLException{
+
         mSourceLangSpinner = (AppCompatSpinner) rootView.findViewById(R.id.sourceLangSpinner);
         mDestinationLangSpinner = (AppCompatSpinner) rootView.findViewById(R.id.destinationLangSpinner);
         mExchangeLangBtn = (IconicsCompatButton) rootView.findViewById(R.id.exchangeLangBtn);
         mSearchWord = (EditText) rootView.findViewById(R.id.searchText);
         mTimer = new Timer();
-
+        mWordDetailsDao = HelperFactory.getHelper().getWordDetailsDao();
         ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(
                 getActivity(),
                 R.array.spinner_languages,
@@ -124,6 +128,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
             }
         });
         mDestinationLangSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position == mSourceLangSpinner.getSelectedItemPosition()) {
@@ -139,6 +144,8 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
 
             }
         });
+
+
         mExchangeLangBtn.setOnClickListener(this);
         mSearchWord.addTextChangedListener(this);
 
@@ -151,3 +158,4 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
         mDestinationLangSpinner.setSelection(mLastSourceLangItemId);
     }
 }
+
