@@ -30,7 +30,7 @@
         android:background="@android:color/white"
         android:paddingLeft="7dp">
         <EditText
-            android:id="@id/sourceWordToTranslate"
+            android:id="@id/sourceWordToTranslateET"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:hint="Введите слово"
@@ -49,7 +49,7 @@
         >
 
         <TextView
-            android:id="@id/translatedWord"
+            android:id="@id/translatedWordTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/white"

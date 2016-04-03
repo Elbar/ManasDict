@@ -151,11 +151,11 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
         mSourceLangSpinner = (AppCompatSpinner) rootView.findViewById(R.id.sourceLangSpinner);
         mDestinationLangSpinner = (AppCompatSpinner) rootView.findViewById(R.id.destinationLangSpinner);
         mExchangeLangBtn = (IconicsCompatButton) rootView.findViewById(R.id.exchangeLangBtn);
-        mSourceWordToTranslate = (EditText) rootView.findViewById(R.id.sourceWordToTranslate);
+        mSourceWordToTranslate = (EditText) rootView.findViewById(R.id.sourceWordToTranslateET);
         mTimer = new Timer();
         mWordDetailsDao = HelperFactory.getHelper().getWordDetailsDao();
         mTranslatedTextCV = (CardView) rootView.findViewById(R.id.translatedWordCV);
-        mTranslatedText = (TextView) rootView.findViewById(R.id.translatedWord);
+        mTranslatedText = (TextView) rootView.findViewById(R.id.translatedWordTV);
         mWordNotFound = getResources().getString(R.string.info_wordNotFound);
 
         final ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(

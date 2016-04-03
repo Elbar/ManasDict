@@ -6,10 +6,14 @@
     <item name="sourceLangSpinner" type="id" />
     <item name="destinationLangSpinner" type="id" />
     <item name="exchangeLangBtn" type="id" />
-    <item name="sourceWordToTranslate" type="id" />
-    <item name="translatedWord" type="id" />
+    <item name="sourceWordToTranslateET" type="id" />
+    <item name="translatedWordTV" type="id" />
     <item name="translatedWordCV" type="id" />
     <item name="addNewWordBtn" type="id" />
     <item name="searchWord" type="id" />
+    <item name="kgWordET" type="id" />
+    <item name="ruWordET" type="id" />
+    <item name="trWordET" type="id" />
+    <item name="enWordET" type="id" />
 
 </resources>
