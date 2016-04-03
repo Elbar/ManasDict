@@ -9,5 +9,6 @@
     <item name="searchText" type="id" />
     <item name="translatedText" type="id" />
     <item name="translatedTextCV" type="id" />
+    <item name="addNewWordBtn" type="id" />
 
 </resources>
