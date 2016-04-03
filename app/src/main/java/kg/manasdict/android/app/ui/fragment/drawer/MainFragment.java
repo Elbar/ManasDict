@@ -30,7 +30,7 @@ import kg.manasdict.android.app.db.model.WordDetails;
 /**
  * Created by root on 3/31/16.
  */
-public class MainFragment extends Fragment implements View.OnClickListener, TextWatcher{
+public class MainFragment extends Fragment implements View.OnClickListener, TextWatcher {
 
     private AppCompatSpinner mSourceLangSpinner;
     private AppCompatSpinner mDestinationLangSpinner;
@@ -174,6 +174,14 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
 
                 mLastSourceLangItemPosition = position;
                 mLastDestinationLangItemPosition = mDestinationLangSpinner.getSelectedItemPosition();
+
+                try {
+                    if(mSearchWord.getText().length() != 0) {
+                        translateText(mSearchWord.getText().toString());
+                    }
+                } catch (SQLException e) {
+                    Log.d(MainFragment.class.getName(), e.getMessage());
+                }
             }
 
             @Override
@@ -218,6 +226,10 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
     protected void exchangeSpinnersItems() {
         mSourceLangSpinner.setSelection(mLastDestinationLangItemPosition);
         mDestinationLangSpinner.setSelection(mLastSourceLangItemPosition);
+
+        if(mTranslatedText.getText() != mWordNotFound) {
+            mSearchWord.setText(mTranslatedText.getText());
+        }
     }
 }
 

@@ -18,6 +18,7 @@ import kg.manasdict.android.app.boot.App;
 import kg.manasdict.android.app.db.HelperFactory;
 import kg.manasdict.android.app.db.Seeds;
 import kg.manasdict.android.app.ui.drawer.DrawerActivityDrawerBuilder;
+import kg.manasdict.android.app.ui.fragment.drawer.DictionaryFragment;
 import kg.manasdict.android.app.ui.fragment.drawer.MainFragment;
 
 /**
@@ -29,6 +30,7 @@ public class DrawerActivity extends AbstractActivity implements Drawer.OnDrawerI
     private Drawer mDrawer;
     private Fragment[] mDrawerFragments;
     private FragmentManager mFragmentManager;
+    private String[] mToolbarTitles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +62,12 @@ public class DrawerActivity extends AbstractActivity implements Drawer.OnDrawerI
         int id = drawerItem.getIdentifier();
 
         switch (id) {
+            case 0:
             case 1:
+                mFragmentManager.beginTransaction().replace(R.id.fragmentsLayout, mDrawerFragments[id]).commit();
+                mToolbar.setTitle(mToolbarTitles[id]);
+                break;
+            case 2:
                 Intent intent = new Intent(this, SettingsActivity.class);
                 startActivity(intent);
         }
@@ -80,15 +87,18 @@ public class DrawerActivity extends AbstractActivity implements Drawer.OnDrawerI
     protected void initActivityElements() {
         mFragmentManager = getSupportFragmentManager();
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbarTitles = getResources().getStringArray(R.array.toolbarTitles);
         setSupportActionBar(mToolbar);
         mDrawer = DrawerActivityDrawerBuilder.build(this, mToolbar, this);
 
         mFragmentManager.beginTransaction().replace(R.id.fragmentsLayout, mDrawerFragments[0]).commit();
+        mToolbar.setTitle(mToolbarTitles[0]);
     }
 
     protected void initDrawerFragments() {
         mDrawerFragments = new Fragment[] {
-            new MainFragment()
+            new MainFragment(),
+            new DictionaryFragment()
         };
     }
 }

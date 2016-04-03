@@ -6,6 +6,7 @@
     <!-- Drawer, toolbar strings -->
     <string name="drawer_toolbar_mainPage">Manas Dict</string>
     <string name="drawer_toolbar_settings">Настройки</string>
+    <string name="drawer_toolbar_dictionary">Словарь</string>
     <string name="drawer_toolbar_aboutApp">О приложении</string>
 
     <!-- Preferences title strings -->

@@ -20,9 +20,10 @@ public class DrawerActivityDrawerBuilder {
     public static Drawer build(final Activity activity, Toolbar toolbar, Drawer.OnDrawerItemClickListener listener) {
         IDrawerItem[] drawerItems = new IDrawerItem[] {
             new PrimaryDrawerItem().withName(R.string.drawer_toolbar_mainPage).withIcon(FontAwesome.Icon.faw_home).withIdentifier(0),
+            new PrimaryDrawerItem().withName(R.string.drawer_toolbar_dictionary).withIcon(FontAwesome.Icon.faw_book).withIdentifier(1),
             new DividerDrawerItem(),
-            new PrimaryDrawerItem().withName(R.string.drawer_toolbar_settings).withIcon(FontAwesome.Icon.faw_cog).withIdentifier(1).withSelectable(false),
-            new PrimaryDrawerItem().withName(R.string.drawer_toolbar_aboutApp).withIcon(FontAwesome.Icon.faw_question).withIdentifier(2).withSelectable(false)
+            new PrimaryDrawerItem().withName(R.string.drawer_toolbar_settings).withIcon(FontAwesome.Icon.faw_cog).withIdentifier(2).withSelectable(false),
+            new PrimaryDrawerItem().withName(R.string.drawer_toolbar_aboutApp).withIcon(FontAwesome.Icon.faw_question).withIdentifier(3).withSelectable(false)
         };
 
         return DrawerBuilder.build(activity, toolbar, R.dimen.drawer_width, drawerItems, listener);
