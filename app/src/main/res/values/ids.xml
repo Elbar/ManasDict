@@ -15,5 +15,11 @@
     <item name="ruWordET" type="id" />
     <item name="trWordET" type="id" />
     <item name="enWordET" type="id" />
+    <item name="kgWordTV" type="id"/>
+    <item name="ruWordTV" type="id"/>
+    <item name="trWordTV" type="id"/>
+    <item name="enWordTV" type="id"/>
+    <item name="dictionaryRV" type="id"/>
+    <item name="dictionaryCV" type="id"/>
 
 </resources>
