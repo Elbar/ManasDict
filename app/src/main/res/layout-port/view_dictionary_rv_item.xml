@@ -7,27 +7,41 @@
     <android.support.v7.widget.CardView
         android:id="@id/dictionaryCV"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
 
-        <TextView
-            android:id="@id/kgWordTV"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@id/kgWordTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"/>
 
-        <TextView
-            android:id="@id/ruWordTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            <TextView
+                android:id="@id/ruWordTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"/>
 
-        <TextView
-            android:id="@id/trWordTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            <TextView
+                android:id="@id/trWordTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"/>
 
-        <TextView
-            android:id="@id/enWordTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </android.support.v7.widget.CardView>
+            <TextView
+                android:id="@id/enWordTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"/>
+
+
+        </LinearLayout>
+        </android.support.v7.widget.CardView>
 
 </LinearLayout>

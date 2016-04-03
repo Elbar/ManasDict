@@ -43,7 +43,7 @@ public class DictionaryRVAdapter extends RecyclerView.Adapter<DictionaryRVAdapte
         holder.trWord.setText(wordDetails.getKgWord());
         holder.enWord.setText(wordDetails.getEnWord());
         holder.ruWord.setText(wordDetails.getRuWord());
-        holder.kgWord.setText(wordDetails.getKgWord());
+        holder.kgWord.setText(wordDetails.getTrWord());
     }
 
     public DictionaryRVAdapter(List<WordDetails> recyclerItems, Context context) {
@@ -63,7 +63,7 @@ public class DictionaryRVAdapter extends RecyclerView.Adapter<DictionaryRVAdapte
         public ViewHolder(View rootView, Context context) {
             super(rootView);
             cardView = (CardView) rootView.findViewById(R.id.dictionaryCV);
-            kgWord = (TextView) rootView.findViewById(R.id.kgWordTV);
+e            kgWord = (TextView) rootView.findViewById(R.id.kgWordTV);
             ruWord = (TextView) rootView.findViewById(R.id.ruWordTV);
             enWord = (TextView) rootView.findViewById(R.id.enWordTV);
             trWord = (TextView) rootView.findViewById(R.id.trWordTV);
