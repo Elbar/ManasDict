@@ -43,7 +43,7 @@ public class DictionaryRVAdapter extends RecyclerView.Adapter<DictionaryRVAdapte
         holder.trWord.setText(wordDetails.getKgWord());
         holder.enWord.setText(wordDetails.getEnWord());
         holder.ruWord.setText(wordDetails.getRuWord());
-        holder.kgWord.setText(wordDetails.getKgWord());
+        holder.kgWord.setText(wordDetails.getTrWord());
     }
 
     public DictionaryRVAdapter(List<WordDetails> recyclerItems, Context context) {
