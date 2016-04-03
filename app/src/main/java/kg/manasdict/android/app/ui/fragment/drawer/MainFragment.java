@@ -109,7 +109,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
     private void translateText(String s) throws SQLException {
         WordDetails wordDetails = null;
 
-        s = s.replaceAll("\\s+$", "");
+        s = s.replaceAll("\\s+$", "").toLowerCase();
         switch (mLastSourceLangItemPosition) {
             case 0:
                 wordDetails = mWordDetailsDao.findByKgWord(s);

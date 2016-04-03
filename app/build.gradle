@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "kg.manasdict.android.manasdict"
+        applicationId "kg.manasdict.android"
         minSdkVersion 14
         targetSdkVersion 23
         versionCode 1

@@ -63,8 +63,8 @@ public class NewWordDialogFragment extends DialogFragment implements TextWatcher
             @Override
             public void onClick(View v) {
                 try {
-                    saveWord(mKgWord.getText().toString().toLowerCase(), mRuWord.getText().toString().toLowerCase(),
-                             mEnWord.getText().toString().toLowerCase(), mTrWord.getText().toString().toLowerCase());
+                    saveWord(formatWord(mKgWord.getText().toString()), formatWord(mRuWord.getText().toString()),
+                             formatWord(mEnWord.getText().toString()), formatWord(mTrWord.getText().toString()));
                 } catch (SQLException e) {
                     Log.e(NewWordDialogFragment.class.getName(), e.getMessage());
                 }
@@ -97,7 +97,7 @@ public class NewWordDialogFragment extends DialogFragment implements TextWatcher
         }
     }
 
-    private void initFragmentElements(View rootView) {
+    protected void initFragmentElements(View rootView) {
         mKgWord = (EditText) rootView.findViewById(R.id.kgWordET);
         mEnWord = (EditText) rootView.findViewById(R.id.enWordET);
         mTrWord = (EditText) rootView.findViewById(R.id.trWordET);
@@ -109,7 +109,11 @@ public class NewWordDialogFragment extends DialogFragment implements TextWatcher
         mRuWord.addTextChangedListener(this);
     }
 
-    private void saveWord(String s1, String s2, String s3, String s4) throws SQLException {
+    protected void saveWord(String s1, String s2, String s3, String s4) throws SQLException {
         mWordDetailsDao.create(new WordDetails(s1, s2, s3, s4));
+    }
+
+    protected String formatWord(String s) {
+        return s.toLowerCase().replaceAll("\\s+$", "");
     }
 }
