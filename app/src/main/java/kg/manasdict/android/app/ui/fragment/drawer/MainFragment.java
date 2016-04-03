@@ -37,7 +37,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
     private IconicsCompatButton mExchangeLangBtn;
     private int mLastSourceLangItemPosition = 0;
     private int mLastDestinationLangItemPosition = 1;
-    private EditText mSearchWord;
+    private EditText mSourceWordToTranslate;
     private Timer mTimer;
     private final long TIMER_DELAY = 1000;
     private WordDetailsDao mWordDetailsDao;
@@ -151,11 +151,11 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
         mSourceLangSpinner = (AppCompatSpinner) rootView.findViewById(R.id.sourceLangSpinner);
         mDestinationLangSpinner = (AppCompatSpinner) rootView.findViewById(R.id.destinationLangSpinner);
         mExchangeLangBtn = (IconicsCompatButton) rootView.findViewById(R.id.exchangeLangBtn);
-        mSearchWord = (EditText) rootView.findViewById(R.id.searchText);
+        mSourceWordToTranslate = (EditText) rootView.findViewById(R.id.sourceWordToTranslate);
         mTimer = new Timer();
         mWordDetailsDao = HelperFactory.getHelper().getWordDetailsDao();
-        mTranslatedTextCV = (CardView) rootView.findViewById(R.id.translatedTextCV);
-        mTranslatedText = (TextView) rootView.findViewById(R.id.translatedText);
+        mTranslatedTextCV = (CardView) rootView.findViewById(R.id.translatedWordCV);
+        mTranslatedText = (TextView) rootView.findViewById(R.id.translatedWord);
         mWordNotFound = getResources().getString(R.string.info_wordNotFound);
 
         final ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(
@@ -176,8 +176,8 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
                 mLastDestinationLangItemPosition = mDestinationLangSpinner.getSelectedItemPosition();
 
                 try {
-                    if(mSearchWord.getText().length() != 0) {
-                        translateText(mSearchWord.getText().toString());
+                    if(mSourceWordToTranslate.getText().length() != 0) {
+                        translateText(mSourceWordToTranslate.getText().toString());
                     }
                 } catch (SQLException e) {
                     Log.d(MainFragment.class.getName(), e.getMessage());
@@ -201,8 +201,8 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
                 mLastDestinationLangItemPosition = position;
 
                 try {
-                    if(mSearchWord.getText().length() != 0) {
-                        translateText(mSearchWord.getText().toString());
+                    if(mSourceWordToTranslate.getText().length() != 0) {
+                        translateText(mSourceWordToTranslate.getText().toString());
                     }
                 } catch (SQLException e) {
                     Log.d(MainFragment.class.getName(), e.getMessage());
@@ -217,7 +217,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
 
 
         mExchangeLangBtn.setOnClickListener(this);
-        mSearchWord.addTextChangedListener(this);
+        mSourceWordToTranslate.addTextChangedListener(this);
 
         mSourceLangSpinner.setSelection(0);
         mDestinationLangSpinner.setSelection(1);
@@ -228,7 +228,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
         mDestinationLangSpinner.setSelection(mLastSourceLangItemPosition);
 
         if(mTranslatedText.getText() != mWordNotFound) {
-            mSearchWord.setText(mTranslatedText.getText());
+            mSourceWordToTranslate.setText(mTranslatedText.getText());
         }
     }
 }

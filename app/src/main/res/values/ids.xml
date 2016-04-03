@@ -6,9 +6,10 @@
     <item name="sourceLangSpinner" type="id" />
     <item name="destinationLangSpinner" type="id" />
     <item name="exchangeLangBtn" type="id" />
-    <item name="searchText" type="id" />
-    <item name="translatedText" type="id" />
-    <item name="translatedTextCV" type="id" />
+    <item name="sourceWordToTranslate" type="id" />
+    <item name="translatedWord" type="id" />
+    <item name="translatedWordCV" type="id" />
     <item name="addNewWordBtn" type="id" />
+    <item name="searchWord" type="id" />
 
 </resources>

@@ -30,7 +30,7 @@
         android:background="@android:color/white"
         android:paddingLeft="7dp">
         <EditText
-            android:id="@id/searchText"
+            android:id="@id/sourceWordToTranslate"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:hint="Введите слово"
@@ -40,7 +40,7 @@
 
     </LinearLayout>
     <android.support.v7.widget.CardView
-        android:id="@id/translatedTextCV"
+        android:id="@id/translatedWordCV"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="5dp"
@@ -49,7 +49,7 @@
         >
 
         <TextView
-            android:id="@id/translatedText"
+            android:id="@id/translatedWord"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/white"
