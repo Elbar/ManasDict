@@ -11,6 +11,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -19,7 +20,6 @@ import java.sql.SQLException;
 import kg.manasdict.android.R;
 import kg.manasdict.android.app.db.HelperFactory;
 import kg.manasdict.android.app.db.dao.WordDetailsDao;
-import kg.manasdict.android.app.db.model.WordDetails;
 import kg.manasdict.android.app.ui.fragment.dialog.NewWordDialogFragment;
 import kg.manasdict.android.app.ui.recyclerview.DictionaryRVAdapter;
 
@@ -83,4 +83,5 @@ public class DictionaryFragment extends Fragment implements View.OnClickListener
         mRecyclerView.setAdapter(new DictionaryRVAdapter(mWordDetailsDao.findAll(), getActivity()));
 
     }
+
 }
