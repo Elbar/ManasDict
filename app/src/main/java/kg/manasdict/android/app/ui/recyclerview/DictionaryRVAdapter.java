@@ -50,11 +50,11 @@ public class DictionaryRVAdapter extends RecyclerView.Adapter<DictionaryRVAdapte
     public void onBindViewHolder(final ViewHolder holder, int position) {
         WordDetails wordDetails = mRecyclerItems.get(position);
 
-        holder.kgWord.setText(wordDetails.getKgWord());
-        holder.enWord.setText(wordDetails.getEnWord());
-        holder.ruWord.setText(wordDetails.getRuWord());
-        holder.trWord.setText(wordDetails.getTrWord());
-        holder.popupActionsBtn.setOnClickListener(new View.OnClickListener() {
+        holder.kgWordTV.setText(wordDetails.getKgWord());
+        holder.enWordTV.setText(wordDetails.getEnWord());
+        holder.ruWordTV.setText(wordDetails.getRuWord());
+        holder.trWordTV.setText(wordDetails.getTrWord());
+        holder.popupActionsIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showPopup(view, holder);
@@ -85,7 +85,7 @@ public class DictionaryRVAdapter extends RecyclerView.Adapter<DictionaryRVAdapte
                 switch (menuItem.getItemId()) {
                     case R.id.popupActionsEdit:
                         try {
-                            mEditWordDialog.setWordDetails(mWordDetailsDao.findByKgWord(holder.kgWord.getText().toString()));
+                            mEditWordDialog.setWordDetails(mWordDetailsDao.findByKgWord(holder.kgWordTV.getText().toString()));
                         } catch (SQLException e) {
                             Log.e(ViewHolder.class.getName(), e.getMessage());
                         }
@@ -106,20 +106,20 @@ public class DictionaryRVAdapter extends RecyclerView.Adapter<DictionaryRVAdapte
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         public CardView cardView;
-        public ImageView popupActionsBtn;
-        public TextView kgWord;
-        public TextView ruWord;
-        public TextView enWord;
-        public TextView trWord;
+        public ImageView popupActionsIV;
+        public TextView kgWordTV;
+        public TextView ruWordTV;
+        public TextView enWordTV;
+        public TextView trWordTV;
 
         public ViewHolder(View rootView) {
             super(rootView);
             cardView = (CardView) rootView.findViewById(R.id.dictionaryCV);
-            popupActionsBtn = (ImageView) rootView.findViewById(R.id.actionsPopupBtn);
-            kgWord = (TextView) rootView.findViewById(R.id.kgWordTV);
-            ruWord = (TextView) rootView.findViewById(R.id.ruWordTV);
-            enWord = (TextView) rootView.findViewById(R.id.enWordTV);
-            trWord = (TextView) rootView.findViewById(R.id.trWordTV);
+            popupActionsIV = (ImageView) rootView.findViewById(R.id.actionsPopupIV);
+            kgWordTV = (TextView) rootView.findViewById(R.id.kgWordTV);
+            ruWordTV = (TextView) rootView.findViewById(R.id.ruWordTV);
+            enWordTV = (TextView) rootView.findViewById(R.id.enWordTV);
+            trWordTV = (TextView) rootView.findViewById(R.id.trWordTV);
         }
     }
 }

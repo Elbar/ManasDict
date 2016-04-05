@@ -29,7 +29,7 @@ public class DictionaryFragment extends Fragment implements View.OnClickListener
 
     private FloatingActionButton mAddNewWordBtn;
     private NewWordDialogFragment mNewWordDialog;
-    private CardView mSearchWord;
+    private CardView mSearchWordCV;
     private RecyclerView mRecyclerView;
     private WordDetailsDao mWordDetailsDao;
 
@@ -69,11 +69,10 @@ public class DictionaryFragment extends Fragment implements View.OnClickListener
     }
 
     protected void initFragmentElements(View rootView) throws SQLException{
-
         mWordDetailsDao = HelperFactory.getHelper().getWordDetailsDao();
         mAddNewWordBtn = (FloatingActionButton) rootView.findViewById(R.id.addNewWordBtn);
         mAddNewWordBtn.setOnClickListener(this);
-        mSearchWord = (CardView) rootView.findViewById(R.id.searchWord);
+        mSearchWordCV = (CardView) rootView.findViewById(R.id.searchWord);
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.dictionaryRV);
         mNewWordDialog = new NewWordDialogFragment();
 

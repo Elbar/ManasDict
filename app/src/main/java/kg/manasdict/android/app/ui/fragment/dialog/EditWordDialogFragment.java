@@ -30,10 +30,10 @@ public class EditWordDialogFragment extends DialogFragment implements TextWatche
     private AlertDialog mDialog;
     private WordDetailsDao mWordDetailsDao;
     private WordDetails mWordDetails;
-    private EditText mKgWord;
-    private EditText mRuWord;
-    private EditText mEnWord;
-    private EditText mTrWord;
+    private EditText mKgWordET;
+    private EditText mRuWordET;
+    private EditText mEnWordET;
+    private EditText mTrWordET;
 
     public EditWordDialogFragment() {
         try {
@@ -64,8 +64,8 @@ public class EditWordDialogFragment extends DialogFragment implements TextWatche
             @Override
             public void onClick(View v) {
                 try {
-                    editWord(formatWord(mKgWord.getText().toString()), formatWord(mRuWord.getText().toString()),
-                            formatWord(mEnWord.getText().toString()), formatWord(mTrWord.getText().toString()));
+                    editWord(formatWord(mKgWordET.getText().toString()), formatWord(mRuWordET.getText().toString()),
+                            formatWord(mEnWordET.getText().toString()), formatWord(mTrWordET.getText().toString()));
                 } catch (SQLException e) {
                     Log.e(EditWordDialogFragment.class.getName(), e.getMessage());
                 }
@@ -90,8 +90,8 @@ public class EditWordDialogFragment extends DialogFragment implements TextWatche
 
     @Override
     public void afterTextChanged(Editable editable) {
-        if ((mKgWord.getText().length() > 0) && (mEnWord.getText().length() > 0)
-                && (mTrWord.getText().length() > 0) && (mRuWord.getText().length() > 0)) {
+        if ((mKgWordET.getText().length() > 0) && (mEnWordET.getText().length() > 0)
+                && (mTrWordET.getText().length() > 0) && (mRuWordET.getText().length() > 0)) {
             mDialog.getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(true);
         } else {
             mDialog.getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(false);
@@ -103,24 +103,24 @@ public class EditWordDialogFragment extends DialogFragment implements TextWatche
     }
 
     protected void setWords() {
-        mKgWord.setText(mWordDetails.getKgWord());
-        mRuWord.setText(mWordDetails.getRuWord());
-        mEnWord.setText(mWordDetails.getEnWord());
-        mTrWord.setText(mWordDetails.getTrWord());
+        mKgWordET.setText(mWordDetails.getKgWord());
+        mRuWordET.setText(mWordDetails.getRuWord());
+        mEnWordET.setText(mWordDetails.getEnWord());
+        mTrWordET.setText(mWordDetails.getTrWord());
     }
 
     protected void initFragmentElements(View rootView) {
-        mKgWord = (EditText) rootView.findViewById(R.id.kgWordET);
-        mEnWord = (EditText) rootView.findViewById(R.id.enWordET);
-        mTrWord = (EditText) rootView.findViewById(R.id.trWordET);
-        mRuWord = (EditText) rootView.findViewById(R.id.ruWordET);
+        mKgWordET = (EditText) rootView.findViewById(R.id.kgWordET);
+        mEnWordET = (EditText) rootView.findViewById(R.id.enWordET);
+        mTrWordET = (EditText) rootView.findViewById(R.id.trWordET);
+        mRuWordET = (EditText) rootView.findViewById(R.id.ruWordET);
 
         setWords();
 
-        mKgWord.addTextChangedListener(this);
-        mEnWord.addTextChangedListener(this);
-        mTrWord.addTextChangedListener(this);
-        mRuWord.addTextChangedListener(this);
+        mKgWordET.addTextChangedListener(this);
+        mEnWordET.addTextChangedListener(this);
+        mTrWordET.addTextChangedListener(this);
+        mRuWordET.addTextChangedListener(this);
     }
 
     protected void editWord(String s1, String s2, String s3, String s4) throws SQLException {

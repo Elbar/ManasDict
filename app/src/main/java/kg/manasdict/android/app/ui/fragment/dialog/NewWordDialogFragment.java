@@ -29,10 +29,10 @@ public class NewWordDialogFragment extends DialogFragment implements TextWatcher
 
     private AlertDialog mDialog;
     private WordDetailsDao mWordDetailsDao;
-    private EditText mKgWord;
-    private EditText mRuWord;
-    private EditText mEnWord;
-    private EditText mTrWord;
+    private EditText mKgWordET;
+    private EditText mRuWordET;
+    private EditText mEnWordET;
+    private EditText mTrWordET;
 
     public NewWordDialogFragment() {
         try {
@@ -63,8 +63,8 @@ public class NewWordDialogFragment extends DialogFragment implements TextWatcher
             @Override
             public void onClick(View v) {
                 try {
-                    saveWord(formatWord(mKgWord.getText().toString()), formatWord(mRuWord.getText().toString()),
-                             formatWord(mEnWord.getText().toString()), formatWord(mTrWord.getText().toString()));
+                    saveWord(formatWord(mKgWordET.getText().toString()), formatWord(mRuWordET.getText().toString()),
+                             formatWord(mEnWordET.getText().toString()), formatWord(mTrWordET.getText().toString()));
                 } catch (SQLException e) {
                     Log.e(NewWordDialogFragment.class.getName(), e.getMessage());
                 }
@@ -89,8 +89,8 @@ public class NewWordDialogFragment extends DialogFragment implements TextWatcher
 
     @Override
     public void afterTextChanged(Editable editable) {
-        if ((mKgWord.getText().length() > 0) && (mEnWord.getText().length() > 0)
-            && (mTrWord.getText().length() > 0) && (mRuWord.getText().length() > 0)) {
+        if ((mKgWordET.getText().length() > 0) && (mEnWordET.getText().length() > 0)
+            && (mTrWordET.getText().length() > 0) && (mRuWordET.getText().length() > 0)) {
             mDialog.getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(true);
         } else {
             mDialog.getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(false);
@@ -98,15 +98,15 @@ public class NewWordDialogFragment extends DialogFragment implements TextWatcher
     }
 
     protected void initFragmentElements(View rootView) {
-        mKgWord = (EditText) rootView.findViewById(R.id.kgWordET);
-        mEnWord = (EditText) rootView.findViewById(R.id.enWordET);
-        mTrWord = (EditText) rootView.findViewById(R.id.trWordET);
-        mRuWord = (EditText) rootView.findViewById(R.id.ruWordET);
+        mKgWordET = (EditText) rootView.findViewById(R.id.kgWordET);
+        mEnWordET = (EditText) rootView.findViewById(R.id.enWordET);
+        mTrWordET = (EditText) rootView.findViewById(R.id.trWordET);
+        mRuWordET = (EditText) rootView.findViewById(R.id.ruWordET);
 
-        mKgWord.addTextChangedListener(this);
-        mEnWord.addTextChangedListener(this);
-        mTrWord.addTextChangedListener(this);
-        mRuWord.addTextChangedListener(this);
+        mKgWordET.addTextChangedListener(this);
+        mEnWordET.addTextChangedListener(this);
+        mTrWordET.addTextChangedListener(this);
+        mRuWordET.addTextChangedListener(this);
     }
 
     protected void saveWord(String s1, String s2, String s3, String s4) throws SQLException {
