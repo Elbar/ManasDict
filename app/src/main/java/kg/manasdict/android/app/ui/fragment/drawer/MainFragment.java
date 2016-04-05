@@ -216,7 +216,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
         }
     }
 
-    public void hideKeyboard(View view) {
+    protected void hideKeyboard(View view) {
         InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
