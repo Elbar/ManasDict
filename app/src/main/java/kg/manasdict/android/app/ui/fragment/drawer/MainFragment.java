@@ -33,7 +33,7 @@ import kg.manasdict.android.app.db.model.WordDetails;
 /**
  * Created by root on 3/31/16.
  */
-public class MainFragment extends Fragment implements View.OnClickListener, TextWatcher {
+public class MainFragment extends Fragment implements View.OnClickListener, TextWatcher, AdapterView.OnItemSelectedListener {
 
     private AppCompatSpinner mSourceLangSpinner;
     private AppCompatSpinner mDestinationLangSpinner;
@@ -69,16 +69,13 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
         }
     }
 
-
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
 
     }
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-
         if (mTimer != null) {
             mTimer.cancel();
         }
@@ -107,6 +104,29 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
             mTranslatedText.setText("");
             mTranslatedTextCV.setVisibility(View.INVISIBLE);
         }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        if (mSourceLangSpinner.getSelectedItemPosition() == mDestinationLangSpinner.getSelectedItemPosition()) {
+            exchangeSpinnersItems();
+        }
+
+        mLastSourceLangItemPosition = mSourceLangSpinner.getSelectedItemPosition();
+        mLastDestinationLangItemPosition = mDestinationLangSpinner.getSelectedItemPosition();
+
+        try {
+            if (mSourceWordToTranslate.getText().length() != 0) {
+                translateText(mSourceWordToTranslate.getText().toString());
+            }
+        } catch (SQLException e) {
+            Log.d(MainFragment.class.getName(), e.getMessage());
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 
     private void translateText(String s) throws SQLException {
@@ -150,7 +170,6 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
     }
 
     protected void initFragmentElements(View rootView) throws SQLException{
-
         mSourceLangSpinner = (AppCompatSpinner) rootView.findViewById(R.id.sourceLangSpinner);
         mDestinationLangSpinner = (AppCompatSpinner) rootView.findViewById(R.id.destinationLangSpinner);
         mExchangeLangBtn = (IconicsCompatButton) rootView.findViewById(R.id.exchangeLangBtn);
@@ -178,56 +197,8 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSourceLangSpinner.setAdapter(spinnerAdapter);
         mDestinationLangSpinner.setAdapter(spinnerAdapter);
-        mSourceLangSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position == mDestinationLangSpinner.getSelectedItemPosition()) {
-                    exchangeSpinnersItems();
-                }
-
-                mLastSourceLangItemPosition = position;
-                mLastDestinationLangItemPosition = mDestinationLangSpinner.getSelectedItemPosition();
-
-                try {
-                    if(mSourceWordToTranslate.getText().length() != 0) {
-                        translateText(mSourceWordToTranslate.getText().toString());
-                    }
-                } catch (SQLException e) {
-                    Log.d(MainFragment.class.getName(), e.getMessage());
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-        mDestinationLangSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position == mSourceLangSpinner.getSelectedItemPosition()) {
-                    exchangeSpinnersItems();
-                }
-
-                mLastSourceLangItemPosition = mSourceLangSpinner.getSelectedItemPosition();
-                mLastDestinationLangItemPosition = position;
-
-                try {
-                    if(mSourceWordToTranslate.getText().length() != 0) {
-                        translateText(mSourceWordToTranslate.getText().toString());
-                    }
-                } catch (SQLException e) {
-                    Log.d(MainFragment.class.getName(), e.getMessage());
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
+        mSourceLangSpinner.setOnItemSelectedListener(this);
+        mDestinationLangSpinner.setOnItemSelectedListener(this);
 
         mExchangeLangBtn.setOnClickListener(this);
         mSourceWordToTranslate.addTextChangedListener(this);
