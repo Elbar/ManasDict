@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="Редактировать" />
-    <item android:title="Удалить" />
-
+    <item android:id="@id/popupActionsEdit" android:title="Редактировать" />
+    <item android:id="@id/popupActionsEdit" android:title="Удалить" />
 </menu>

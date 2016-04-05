@@ -11,7 +11,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -29,7 +28,7 @@ import kg.manasdict.android.app.ui.recyclerview.DictionaryRVAdapter;
 public class DictionaryFragment extends Fragment implements View.OnClickListener, TextWatcher {
 
     private FloatingActionButton mAddNewWordBtn;
-    private NewWordDialogFragment mNewWordDialog = new NewWordDialogFragment();
+    private NewWordDialogFragment mNewWordDialog;
     private CardView mSearchWord;
     private RecyclerView mRecyclerView;
     private WordDetailsDao mWordDetailsDao;
@@ -45,6 +44,7 @@ public class DictionaryFragment extends Fragment implements View.OnClickListener
         }
         return rootView;
     }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -75,12 +75,13 @@ public class DictionaryFragment extends Fragment implements View.OnClickListener
         mAddNewWordBtn.setOnClickListener(this);
         mSearchWord = (CardView) rootView.findViewById(R.id.searchWord);
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.dictionaryRV);
+        mNewWordDialog = new NewWordDialogFragment();
 
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         manager.setOrientation(LinearLayoutManager.VERTICAL);
 
         mRecyclerView.setLayoutManager(manager);
-        mRecyclerView.setAdapter(new DictionaryRVAdapter(mWordDetailsDao.findAll(), getActivity()));
+        mRecyclerView.setAdapter(new DictionaryRVAdapter(mWordDetailsDao.findAll(), getActivity(), getChildFragmentManager()));
 
     }
 
