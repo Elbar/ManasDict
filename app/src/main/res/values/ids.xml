@@ -21,5 +21,6 @@
     <item name="enWordTV" type="id"/>
     <item name="dictionaryRV" type="id"/>
     <item name="dictionaryCV" type="id"/>
+    <item name="popupEditDeleteBtn" type="id" />
 
 </resources>

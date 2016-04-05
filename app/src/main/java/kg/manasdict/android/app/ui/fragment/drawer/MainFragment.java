@@ -1,5 +1,6 @@
 package kg.manasdict.android.app.ui.fragment.drawer;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethod;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -158,6 +161,16 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
         mTranslatedText = (TextView) rootView.findViewById(R.id.translatedWordTV);
         mWordNotFound = getResources().getString(R.string.info_wordNotFound);
 
+        mSourceWordToTranslate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    hideKeyboard(v);
+                }
+
+            }
+        });
+
         final ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(
                 getActivity(),
                 R.array.spinner_languages,
@@ -230,6 +243,12 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
         if(mTranslatedText.getText() != mWordNotFound) {
             mSourceWordToTranslate.setText(mTranslatedText.getText());
         }
+    }
+
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+
     }
 }
 
