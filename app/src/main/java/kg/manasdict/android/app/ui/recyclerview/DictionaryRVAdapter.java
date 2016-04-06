@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -92,7 +93,13 @@ public class DictionaryRVAdapter extends RecyclerView.Adapter<DictionaryRVAdapte
                         mEditWordDialog.show(mManager, "EDIT_WORD_DIALOG");
                         break;
                     case R.id.popupActionsDelete:
-
+                        try {
+                            mWordDetailsDao.delete(mWordDetailsDao.findByKgWord(holder.kgWordTV.getText().toString()));
+                            holder.cardView.setVisibility(View.GONE);
+                            Toast.makeText(mContext, "Слово успешно удалено!", Toast.LENGTH_LONG).show();
+                        } catch (SQLException e) {
+                            Log.e(ViewHolder.class.getName(), e.getMessage());
+                        }
                         break;
                 }
 
