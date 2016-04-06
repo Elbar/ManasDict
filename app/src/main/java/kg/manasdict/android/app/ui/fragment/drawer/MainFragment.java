@@ -193,7 +193,6 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
                 getActivity(),
                 R.array.spinner_languages,
                 android.R.layout.simple_spinner_dropdown_item);
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSourceLangSpinner.setAdapter(spinnerAdapter);
         mDestinationLangSpinner.setAdapter(spinnerAdapter);
         mSourceLangSpinner.setOnItemSelectedListener(this);
@@ -218,7 +217,6 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
     protected void hideKeyboard(View view) {
         InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
-
     }
 }
 
