@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -95,7 +97,8 @@ public class DictionaryRVAdapter extends RecyclerView.Adapter<DictionaryRVAdapte
                     case R.id.popupActionsDelete:
                         try {
                             mWordDetailsDao.delete(mWordDetailsDao.findByKgWord(holder.kgWordTV.getText().toString()));
-                            holder.cardView.setVisibility(View.GONE);
+                            animateDeleteAction(holder.cardView);
+
                             Toast.makeText(mContext, "Слово успешно удалено!", Toast.LENGTH_LONG).show();
                         } catch (SQLException e) {
                             Log.e(ViewHolder.class.getName(), e.getMessage());
@@ -109,6 +112,30 @@ public class DictionaryRVAdapter extends RecyclerView.Adapter<DictionaryRVAdapte
 
         popupMenu.show();
     }
+
+    protected void animateDeleteAction(final View view) {
+        Animation animation = AnimationUtils.loadAnimation(mContext, android.R.anim.fade_out);
+        animation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                view.setVisibility(View.GONE);
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+        view.startAnimation(animation);
+
+    }
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
