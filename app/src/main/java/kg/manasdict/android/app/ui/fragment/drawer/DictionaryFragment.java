@@ -29,7 +29,6 @@ public class DictionaryFragment extends Fragment implements View.OnClickListener
 
     private FloatingActionButton mAddNewWordBtn;
     private NewWordDialogFragment mNewWordDialog;
-    private CardView mSearchWordCV;
     private RecyclerView mRecyclerView;
     private WordDetailsDao mWordDetailsDao;
 
@@ -72,7 +71,6 @@ public class DictionaryFragment extends Fragment implements View.OnClickListener
         mWordDetailsDao = HelperFactory.getHelper().getWordDetailsDao();
         mAddNewWordBtn = (FloatingActionButton) rootView.findViewById(R.id.addNewWordBtn);
         mAddNewWordBtn.setOnClickListener(this);
-        mSearchWordCV = (CardView) rootView.findViewById(R.id.searchWord);
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.dictionaryRV);
         mNewWordDialog = new NewWordDialogFragment();
 
