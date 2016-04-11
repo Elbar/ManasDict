@@ -1,6 +1,5 @@
 package kg.manasdict.android.app.ui.fragment.drawer;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,7 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -28,6 +26,7 @@ import kg.manasdict.android.R;
 import kg.manasdict.android.app.db.HelperFactory;
 import kg.manasdict.android.app.db.dao.WordDetailsDao;
 import kg.manasdict.android.app.db.model.WordDetails;
+import kg.manasdict.android.lib.util.SystemHelper;
 
 /**
  * Created by root on 3/31/16.
@@ -91,7 +90,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
                         @Override
                         public void run() {
                             try {
-                                translateText(s.toString());
+                                translateWord(s.toString());
                             } catch (SQLException e) {
                                 Log.d(MainFragment.class.getName(), e.getMessage());
                             }
@@ -116,7 +115,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
 
         try {
             if (mSourceWordToTranslateET.getText().length() != 0) {
-                translateText(mSourceWordToTranslateET.getText().toString());
+                translateWord(mSourceWordToTranslateET.getText().toString());
             }
         } catch (SQLException e) {
             Log.d(MainFragment.class.getName(), e.getMessage());
@@ -128,7 +127,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
 
     }
 
-    protected void translateText(String s) throws SQLException {
+    protected void translateWord(String s) throws SQLException {
         WordDetails wordDetails = null;
 
         s = s.replaceAll("\\s+$", "").toLowerCase();
@@ -183,7 +182,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
-                    hideKeyboard(v);
+                    SystemHelper.hideKeyboard(getActivity(), v);
                 }
 
             }
@@ -212,11 +211,6 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
         if(mTranslatedWordTV.getText() != mWordNotFound) {
             mSourceWordToTranslateET.setText(mTranslatedWordTV.getText());
         }
-    }
-
-    protected void hideKeyboard(View view) {
-        InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }
 

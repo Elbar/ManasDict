@@ -20,6 +20,7 @@ import kg.manasdict.android.R;
 import kg.manasdict.android.app.db.HelperFactory;
 import kg.manasdict.android.app.db.dao.WordDetailsDao;
 import kg.manasdict.android.app.db.model.WordDetails;
+import kg.manasdict.android.lib.util.TextHelper;
 
 /**
  * Created by fukuro on 4/3/16.
@@ -63,8 +64,8 @@ public class NewWordDialogFragment extends DialogFragment implements TextWatcher
             @Override
             public void onClick(View v) {
                 try {
-                    saveWord(formatWord(mKgWordET.getText().toString()), formatWord(mRuWordET.getText().toString()),
-                             formatWord(mEnWordET.getText().toString()), formatWord(mTrWordET.getText().toString()));
+                    saveWord(TextHelper.formatWord(mKgWordET.getText().toString()), TextHelper.formatWord(mRuWordET.getText().toString()),
+                             TextHelper.formatWord(mEnWordET.getText().toString()), TextHelper.formatWord(mTrWordET.getText().toString()));
                 } catch (SQLException e) {
                     Log.e(NewWordDialogFragment.class.getName(), e.getMessage());
                 }
@@ -111,9 +112,5 @@ public class NewWordDialogFragment extends DialogFragment implements TextWatcher
 
     protected void saveWord(String s1, String s2, String s3, String s4) throws SQLException {
         mWordDetailsDao.create(new WordDetails(s1, s2, s3, s4));
-    }
-
-    protected String formatWord(String s) {
-        return s.toLowerCase().replaceAll("\\s+$", "");
     }
 }
