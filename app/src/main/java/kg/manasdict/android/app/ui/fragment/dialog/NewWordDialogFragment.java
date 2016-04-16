@@ -53,7 +53,7 @@ public class NewWordDialogFragment extends DialogFragment implements TextWatcher
         initFragmentElements(rootView);
 
         builder.setView(rootView);
-        builder.setTitle("Добавить слово");
+        builder.setTitle("Добавить слово?");
         builder.setPositiveButton("Да", null);
         builder.setNegativeButton("Нет", null);
 

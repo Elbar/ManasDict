@@ -51,4 +51,11 @@
             <item>Английский</item>
         </string-array>
 
+
+
+    <!--- Dialog(Yes/Cancel)  strings -->
+    <string name="dialog_add_word">Добавить слово?</string>
+    <string name="dialog_save_word">Да</string>
+    <string name="dialog_edit_word">Нет</string>
+
 </resources>

@@ -24,5 +24,8 @@
     <item name="actionsPopupIV" type="id" />
     <item name="popupActionsEdit" type="id" />
     <item name="popupActionsDelete" type="id" />
+    <item name="dialog_add_word" type="id"></item>
+    <item name="dialog_edit_word" type="id"></item>
+    <item name="dialog_save_word" type="id"></item>
 
 </resources>
