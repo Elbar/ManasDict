@@ -171,9 +171,9 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
     }
 
     protected void initFragmentElements(View rootView) throws SQLException{
-        ButterKnife.bind(this,rootView);
         mTimer = new Timer();
         mWordDetailsDao = HelperFactory.getHelper().getWordDetailsDao();
+        ButterKnife.bind(this, rootView);
 
         mWordNotFound = getResources().getString(R.string.info_wordNotFound);
 
