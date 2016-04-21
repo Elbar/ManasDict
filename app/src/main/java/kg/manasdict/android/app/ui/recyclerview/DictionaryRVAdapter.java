@@ -36,6 +36,19 @@ public class DictionaryRVAdapter extends RecyclerView.Adapter<DictionaryRVAdapte
     private EditWordDialogFragment mEditWordDialog;
     private WordDetailsDao mWordDetailsDao;
 
+    public DictionaryRVAdapter(List<WordDetails> recyclerItems, Context context, FragmentManager manager) {
+        mRecyclerItems = recyclerItems;
+        mContext = context;
+        mManager = manager;
+        mEditWordDialog = new EditWordDialogFragment();
+
+        try {
+            mWordDetailsDao = HelperFactory.getHelper().getWordDetailsDao();
+        } catch (SQLException e) {
+            Log.e(DictionaryRVAdapter.class.getName(), e.getMessage());
+        }
+    }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -63,19 +76,6 @@ public class DictionaryRVAdapter extends RecyclerView.Adapter<DictionaryRVAdapte
                 showPopup(view, holder);
             }
         });
-    }
-
-    public DictionaryRVAdapter(List<WordDetails> recyclerItems, Context context, FragmentManager manager) {
-        mRecyclerItems = recyclerItems;
-        mContext = context;
-        mManager = manager;
-        mEditWordDialog = new EditWordDialogFragment();
-
-        try {
-            mWordDetailsDao = HelperFactory.getHelper().getWordDetailsDao();
-        } catch (SQLException e) {
-            Log.e(DictionaryRVAdapter.class.getName(), e.getMessage());
-        }
     }
 
     protected void showPopup(View v, final ViewHolder holder) {

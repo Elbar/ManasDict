@@ -33,6 +33,7 @@ import kg.manasdict.android.lib.util.SystemHelper;
  */
 public class MainFragment extends Fragment implements View.OnClickListener, TextWatcher, AdapterView.OnItemSelectedListener {
 
+    private final long TIMER_DELAY = 1000;
     private AppCompatSpinner mSourceLangSpinner;
     private AppCompatSpinner mDestinationLangSpinner;
     private IconicsCompatButton mExchangeLangBtn;
@@ -40,7 +41,6 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
     private int mLastDestinationLangItemPosition = 1;
     private EditText mSourceWordToTranslateET;
     private Timer mTimer;
-    private final long TIMER_DELAY = 1000;
     private WordDetailsDao mWordDetailsDao;
     private CardView mTranslatedWordCV;
     private TextView mTranslatedWordTV;

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <EditText
         android:id="@id/ruWordET"
@@ -10,8 +11,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="5dp"
-        android:hint="Ru"
-        />
+        android:hint="Ru" />
 
     <EditText
         android:id="@id/kgWordET"
@@ -20,8 +20,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="5dp"
-        android:hint="Kg"
-        />
+        android:hint="Kg" />
 
     <EditText
         android:id="@id/enWordET"
@@ -30,8 +29,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="5dp"
-        android:hint="En"
-        />
+        android:hint="En" />
 
     <EditText
         android:id="@id/trWordET"
@@ -40,7 +38,6 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="5dp"
-        android:hint="Tr"
-        />
+        android:hint="Tr" />
 
 </LinearLayout>

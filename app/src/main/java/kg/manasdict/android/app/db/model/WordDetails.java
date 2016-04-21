@@ -22,6 +22,16 @@ public class WordDetails {
     @DatabaseField(columnName = "tr_word")
     private String trWord;
 
+    public WordDetails() {
+    }
+
+    public WordDetails(final String kgWord, final String ruWord, final String enWord, final String trWord) {
+        this.kgWord = kgWord;
+        this.ruWord = ruWord;
+        this.enWord = enWord;
+        this.trWord = trWord;
+    }
+
     public int getId() {
         return id;
     }
@@ -55,16 +65,6 @@ public class WordDetails {
     }
 
     public void setTrWord(String trWord) {
-        this.trWord = trWord;
-    }
-
-    public WordDetails() {
-    }
-
-    public WordDetails(final String kgWord, final String ruWord, final String enWord, final String trWord) {
-        this.kgWord = kgWord;
-        this.ruWord = ruWord;
-        this.enWord = enWord;
         this.trWord = trWord;
     }
 }

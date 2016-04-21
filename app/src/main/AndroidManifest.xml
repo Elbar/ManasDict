@@ -5,23 +5,25 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-    <application android:name=".app.boot.App"
-                 android:allowBackup="true"
-                 android:icon="@mipmap/ic_launcher"
-                 android:label="@string/app_name"
-                 android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+    <application
+        android:name=".app.boot.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-        <activity android:name="kg.manasdict.android.app.ui.activity.DrawerActivity"
-                  android:screenOrientation="portrait">
+        <activity
+            android:name="kg.manasdict.android.app.ui.activity.DrawerActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".app.ui.activity.SettingsActivity"
-                  android:screenOrientation="portrait">
-        </activity>
+        <activity
+            android:name=".app.ui.activity.SettingsActivity"
+            android:screenOrientation="portrait"></activity>
 
     </application>
 

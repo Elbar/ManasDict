@@ -44,13 +44,12 @@
     <string name="info_wordNotFound">Слово не найдено</string>
 
     <!-- Spinner strings -->
-        <string-array name="spinner_languages">
-            <item>Кыргызский</item>
-            <item>Турецкий</item>
-            <item>Русский</item>
-            <item>Английский</item>
-        </string-array>
-
+    <string-array name="spinner_languages">
+        <item>Кыргызский</item>
+        <item>Турецкий</item>
+        <item>Русский</item>
+        <item>Английский</item>
+    </string-array>
 
 
     <!--- Dialog(Yes/Cancel)  strings -->

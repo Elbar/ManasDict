@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/DT.ContentLayout">
 
-    <android.support.design.widget.CoordinatorLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
@@ -12,10 +11,8 @@
             android:id="@id/dictionaryRV"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="vertical"
             android:fadeScrollbars="false"
-            >
-        </android.support.v7.widget.RecyclerView>
+            android:scrollbars="vertical"></android.support.v7.widget.RecyclerView>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@id/addNewWordBtn"
@@ -23,8 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="10dp"
-            android:src="@drawable/ic_add"
-        />
+            android:src="@drawable/ic_add" />
 
     </android.support.design.widget.CoordinatorLayout>
 </LinearLayout>
