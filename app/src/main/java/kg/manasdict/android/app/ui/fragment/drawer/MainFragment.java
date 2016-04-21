@@ -22,6 +22,8 @@ import java.sql.SQLException;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import kg.manasdict.android.R;
 import kg.manasdict.android.app.db.HelperFactory;
 import kg.manasdict.android.app.db.dao.WordDetailsDao;
@@ -33,17 +35,18 @@ import kg.manasdict.android.lib.util.SystemHelper;
  */
 public class MainFragment extends Fragment implements View.OnClickListener, TextWatcher, AdapterView.OnItemSelectedListener {
 
+    @Bind(R.id.translatedWordCV) CardView mTranslatedWordCV;
+    @Bind(R.id.translatedWordTV) TextView mTranslatedWordTV;
+    @Bind(R.id.sourceLangSpinner) AppCompatSpinner mSourceLangSpinner;
+    @Bind(R.id.destinationLangSpinner) AppCompatSpinner mDestinationLangSpinner;
+    @Bind(R.id.exchangeLangBtn) IconicsCompatButton mExchangeLangBtn;
+    @Bind(R.id.sourceWordToTranslateET) EditText mSourceWordToTranslateET;
+
     private final long TIMER_DELAY = 1000;
-    private AppCompatSpinner mSourceLangSpinner;
-    private AppCompatSpinner mDestinationLangSpinner;
-    private IconicsCompatButton mExchangeLangBtn;
     private int mLastSourceLangItemPosition = 0;
     private int mLastDestinationLangItemPosition = 1;
-    private EditText mSourceWordToTranslateET;
     private Timer mTimer;
     private WordDetailsDao mWordDetailsDao;
-    private CardView mTranslatedWordCV;
-    private TextView mTranslatedWordTV;
     private String mWordNotFound;
 
     @Nullable
@@ -167,15 +170,11 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
         mTranslatedWordCV.setVisibility(View.VISIBLE);
     }
 
-    protected void initFragmentElements(View rootView) throws SQLException{
-        mSourceLangSpinner = (AppCompatSpinner) rootView.findViewById(R.id.sourceLangSpinner);
-        mDestinationLangSpinner = (AppCompatSpinner) rootView.findViewById(R.id.destinationLangSpinner);
-        mExchangeLangBtn = (IconicsCompatButton) rootView.findViewById(R.id.exchangeLangBtn);
-        mSourceWordToTranslateET = (EditText) rootView.findViewById(R.id.sourceWordToTranslateET);
+    protected void initFragmentElements(View rootView) throws SQLException {
+        ButterKnife.bind(this, rootView);
         mTimer = new Timer();
         mWordDetailsDao = HelperFactory.getHelper().getWordDetailsDao();
-        mTranslatedWordCV = (CardView) rootView.findViewById(R.id.translatedWordCV);
-        mTranslatedWordTV = (TextView) rootView.findViewById(R.id.translatedWordTV);
+
         mWordNotFound = getResources().getString(R.string.info_wordNotFound);
 
         mSourceWordToTranslateET.setOnFocusChangeListener(new View.OnFocusChangeListener() {

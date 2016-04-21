@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import java.sql.SQLException;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import kg.manasdict.android.R;
 import kg.manasdict.android.app.db.HelperFactory;
 import kg.manasdict.android.app.db.dao.WordDetailsDao;
@@ -27,13 +29,13 @@ import kg.manasdict.android.lib.util.TextHelper;
  */
 
 public class NewWordDialogFragment extends DialogFragment implements TextWatcher {
+    @Bind(R.id.kgWordET)  EditText mKgWordET;
+    @Bind(R.id.enWordET)  EditText mEnWordET;
+    @Bind(R.id.trWordET)  EditText mTrWordET;
+    @Bind(R.id.ruWordET)  EditText mRuWordET;
 
     private AlertDialog mDialog;
     private WordDetailsDao mWordDetailsDao;
-    private EditText mKgWordET;
-    private EditText mRuWordET;
-    private EditText mEnWordET;
-    private EditText mTrWordET;
 
     public NewWordDialogFragment() {
         try {
@@ -99,11 +101,8 @@ public class NewWordDialogFragment extends DialogFragment implements TextWatcher
     }
 
     protected void initFragmentElements(View rootView) {
-        mKgWordET = (EditText) rootView.findViewById(R.id.kgWordET);
-        mEnWordET = (EditText) rootView.findViewById(R.id.enWordET);
-        mTrWordET = (EditText) rootView.findViewById(R.id.trWordET);
-        mRuWordET = (EditText) rootView.findViewById(R.id.ruWordET);
 
+        ButterKnife.bind(this,rootView);
         mKgWordET.addTextChangedListener(this);
         mEnWordET.addTextChangedListener(this);
         mTrWordET.addTextChangedListener(this);
