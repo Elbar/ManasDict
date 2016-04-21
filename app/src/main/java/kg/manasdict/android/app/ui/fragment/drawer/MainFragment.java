@@ -170,8 +170,8 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
         mTranslatedWordCV.setVisibility(View.VISIBLE);
     }
 
-    protected void initFragmentElements(View rootView) throws SQLException {
-        ButterKnife.bind(this, rootView);
+    protected void initFragmentElements(View rootView) throws SQLException{
+        ButterKnife.bind(this,rootView);
         mTimer = new Timer();
         mWordDetailsDao = HelperFactory.getHelper().getWordDetailsDao();
 
