@@ -5,17 +5,17 @@
 
     <!-- Drawer, toolbar strings -->
     <string name="drawer_toolbar_mainPage">Manas Dict</string>
-    <string name="drawer_toolbar_settings">Настройки</string>
-    <string name="drawer_toolbar_dictionary">Словарь</string>
-    <string name="drawer_toolbar_aboutApp">О приложении</string>
+    <string name="drawer_toolbar_settings">Ayarlar</string>
+    <string name="drawer_toolbar_dictionary">Sözlük</string>
+    <string name="drawer_toolbar_aboutApp">Uygulama Hakkında</string>
 
     <!-- Preferences title strings -->
-    <string name="pref_title_language">Язык приложения</string>
-    <string name="pref_title_about">О приложении</string>
+    <string name="pref_title_language">Uygulamanın Dili</string>
+    <string name="pref_title_about">Uygulama Hakkında</string>
 
     <!-- Preferences summary strings -->
-    <string name="pref_summary_language">Язык интерфейса приложения</string>
-    <string name="pref_summary_about">Версия: 1.0</string>
+    <string name="pref_summary_language">Uygulama Arabirimi Dili</string>
+    <string name="pref_summary_about">Versiyon: 1.0</string>
 
     <!-- Preferences entries -->
     <string-array name="pref_entries_languages">
@@ -33,7 +33,7 @@
     </string-array>
 
     <!-- Info strings -->
-    <string name="info_changeLocale">Язык будет изменен при следующем запуске.</string>
+    <string name="info_changeLocale">Dil dahaki sefere değişmiş olacak.</string>
     <string name="info_wordNotFound">Soz bulunmamis</string>
 
 
