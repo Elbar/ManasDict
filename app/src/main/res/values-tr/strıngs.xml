@@ -7,7 +7,6 @@
     <string name="drawer_toolbar_mainPage">Manas Dict</string>
     <string name="drawer_toolbar_settings">Ayarlar</string>
     <string name="drawer_toolbar_dictionary">Sözlük</string>
-    <string name="drawer_toolbar_aboutApp">Uygulama Hakkında</string>
 
     <!-- Preferences title strings -->
     <string name="pref_title_language">Uygulamanın Dili</string>
