@@ -10,11 +10,9 @@
 
     <!-- Preferences title strings -->
     <string name="pref_title_language">Uygulamanın Dili</string>
-    <string name="pref_title_about">Uygulama Hakkında</string>
 
     <!-- Preferences summary strings -->
     <string name="pref_summary_language">Uygulama Arabirimi Dili</string>
-    <string name="pref_summary_about">Versiyon: 1.0</string>
 
     <!-- Preferences entries -->
     <string-array name="pref_entries_languages">
@@ -33,7 +31,22 @@
 
     <!-- Info strings -->
     <string name="info_changeLocale">Dil dahaki sefere değişmiş olacak.</string>
-    <string name="info_wordNotFound">Soz bulunmamis</string>
+    <string name="info_wordNotFound">Soz bulunmamiş</string>
+
+    <!-- Spinner strings -->
+    <string-array name="spinner_languages">
+        <item>Kırgızca</item>
+        <item>Türkçe</item>
+        <item>Rusça</item>
+        <item>İngilizce</item>
+    </string-array>
+
+
+    <!--- Dialog(Yes/Cancel)  strings -->
+    <string name="dialog_add_word">Yeni sozmu?</string>
+    <string name="dialog_save_word">Evet</string>
+    <string name="dialog_edit_word">Hayir</string>
+
 
 
 </resources>
