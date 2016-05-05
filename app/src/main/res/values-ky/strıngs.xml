@@ -10,11 +10,9 @@
 
     <!-- Preferences title strings -->
     <string name="pref_title_language">Колдонмонун тили</string>
-    <string name="pref_title_about">Колдонмо тууралуу маалымат</string>
 
     <!-- Preferences summary strings -->
     <string name="pref_summary_language">Колдонмонун интерфейс тили</string>
-    <string name="pref_summary_about">Версия: 1.0</string>
 
     <!-- Preferences entries -->
     <string-array name="pref_entries_languages">
@@ -35,5 +33,17 @@
     <string name="info_changeLocale">Тандалган тил кийинки кириште өзгөрөт.</string>
     <string name="info_wordNotFound">Сөз табылган жок</string>
 
+    <!-- Spinner strings -->
+    <string-array name="spinner_languages">
+        <item>Кыргызча</item>
+        <item>Туркчо</item>
+        <item>Орусча</item>
+        <item>Англисче</item>
+    </string-array>
 
+    <!--- Dialog(Yes/Cancel)  strings -->
+    <string name="dialog_add_word">Жаны соз кошосузбу?</string>
+    <string name="dialog_save_word">Ооба</string>
+    <string name="dialog_edit_word">Жок</string>
+    
 </resources>
