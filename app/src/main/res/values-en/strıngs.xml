@@ -10,11 +10,9 @@
 
     <!-- Preferences title strings -->
     <string name="pref_title_language">App language</string>
-    <string name="pref_title_about">About app</string>
 
     <!-- Preferences summary strings -->
     <string name="pref_summary_language">UI language</string>
-    <string name="pref_summary_about">Version: 1.0</string>
 
     <!-- Preferences entries -->
     <string-array name="pref_entries_languages">
@@ -34,6 +32,20 @@
     <!-- Info strings -->
     <string name="info_changeLocale">The language will be changed in next launch.</string>
     <string name="info_wordNotFound">Word not found</string>
+
+    <!-- Spinner strings -->
+    <string-array name="spinner_languages">
+        <item>Kyrgyz</item>
+        <item>Turkish</item>
+        <item>Russian</item>
+        <item>English</item>
+    </string-array>
+
+
+    <!--- Dialog(Yes/Cancel)  strings -->
+    <string name="dialog_add_word">Add a new word?</string>
+    <string name="dialog_save_word">Yes</string>
+    <string name="dialog_edit_word">No</string>
 
 
 </resources>
