@@ -37,7 +37,8 @@ public class Seeds {
         seeds.add(new WordDetails("унаа", "машина", "car", "araba"));
         seeds.add(new WordDetails("алма", "яблоко", "apple", "elma"));
         seeds.add(new WordDetails("компьютер", "компьютер", "computer", "bilgisayar"));
-        seeds.add(new WordDetails("асман", "небо", "sky", "gokyuzu"));
+       seeds.add(new WordDetails("асман", "небо", "sky", "gokyuzu"));
+
     }
 
     protected static void test() throws SQLException {

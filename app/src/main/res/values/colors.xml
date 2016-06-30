@@ -4,4 +4,7 @@
     <item name="dt_contentLayout_bg" type="color">#e2e2e2</item>
     <item name="dt_exchangeButton_bg" type="color">#00468c</item>
 
+    <!-- Material colors -->
+    <item name="material_drawer_selected" type="color">@android:color/white</item>
+    
 </resources>
