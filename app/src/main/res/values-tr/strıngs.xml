@@ -13,6 +13,7 @@
 
     <!-- Preferences summary strings -->
     <string name="pref_summary_language">Uygulama Arabirimi Dili</string>
+    <string name="pref_summary_about">Program hakkında</string>
 
     <!-- Preferences entries -->
     <string-array name="pref_entries_languages">
