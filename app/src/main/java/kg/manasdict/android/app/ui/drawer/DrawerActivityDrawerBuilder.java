@@ -23,7 +23,6 @@ public class DrawerActivityDrawerBuilder {
             new PrimaryDrawerItem().withName(R.string.drawer_toolbar_dictionary).withIcon(FontAwesome.Icon.faw_book).withIdentifier(1),
             new DividerDrawerItem(),
             new PrimaryDrawerItem().withName(R.string.drawer_toolbar_settings).withIcon(FontAwesome.Icon.faw_cog).withIdentifier(2).withSelectable(false),
-            new PrimaryDrawerItem().withName(R.string.drawer_toolbar_aboutApp).withIcon(FontAwesome.Icon.faw_question).withIdentifier(3).withSelectable(false)
         };
 
         return DrawerBuilder.build(activity, toolbar, R.dimen.drawer_width, drawerItems, listener);

@@ -5,18 +5,14 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
-import java.sql.SQLException;
-
 import kg.manasdict.android.R;
 import kg.manasdict.android.app.boot.App;
 import kg.manasdict.android.app.db.HelperFactory;
-import kg.manasdict.android.app.db.Seeds;
 import kg.manasdict.android.app.ui.drawer.DrawerActivityDrawerBuilder;
 import kg.manasdict.android.app.ui.fragment.drawer.DictionaryFragment;
 import kg.manasdict.android.app.ui.fragment.drawer.MainFragment;
@@ -43,11 +39,11 @@ public class DrawerActivity extends AbstractActivity implements Drawer.OnDrawerI
         initDrawerFragments();
         initActivityElements();
 
-        try {
-            Seeds.install();
-        } catch (SQLException e) {
-            Log.d(DrawerActivity.class.getName(), "cannot install or load seeds");
-        }
+//        try {
+//            Seeds.install();
+//        } catch (SQLException e) {
+//            Log.d(DrawerActivity.class.getName(), "cannot install or load seeds");
+//        }
     }
 
     @Override
